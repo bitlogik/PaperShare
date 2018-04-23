@@ -90,7 +90,7 @@ def update_draw_imgs(evt):
     msg_array = np.where(img_inputgray > threshold_slider.val,
                           0,
                           1)
-     # Encryption of the data and image generation
+    # Encryption of the data and image generation
     ciphered_img = bin2img(ks_array ^ msg_array)
     img_plot.set_data(msg_array)
     cim_plot.set_data(ciphered_img)
