@@ -29,7 +29,7 @@ def quarter_round(x, a, b, c, d):
     x[a] += x[b]; x[d] = rotl32(x[d] ^ x[a], np.uint32( 8))
     x[c] += x[d]; x[b] = rotl32(x[b] ^ x[c], np.uint32( 7))
 
-def salsa20_block(secret_state):
+def chacha20_block(secret_state):
     mx = np.copy(secret_state)
     i = 10
     while i > 0:
@@ -59,14 +59,14 @@ def init_state(iv, key, ctr = np.uint32(0)):
 
 def gen_keystream(ctx, length):
     output = np.zeros(0,np.uint8)
-    block = salsa20_block(ctx)
+    block = chacha20_block(ctx)
     while length > np.uint32(64):
         output = np.append(output, block)
         ctx[12] += 1
         if ctx[12] == np.uint32(0):
             ctx[13] += 1
         length -= np.uint32(64)
-        block = salsa20_block(ctx)
+        block = chacha20_block(ctx)
     return np.append(output, block[:length])
 
 def encrypt_bytes(ctx, m, length):
