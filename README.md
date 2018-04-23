@@ -96,7 +96,7 @@ That is simulating what you would see when superposing papers. To get a clear fu
 
 ## Technical details and Security
 
-PaperShare is based on the [chacha20](https://cr.yp.to/chacha/chacha-20080128.pdf) stream cipher, an improvement of the [Salsa20 stream cipher](https://cr.yp.to/snuffle/spec.pdf). The scheme is mathematically secure as this is a one-time pad ciphering.
+PaperShare is based on the [chacha20](https://cr.yp.to/chacha/chacha-20080128.pdf) stream cipher, standardized by [RFC7539](https://tools.ietf.org/html/rfc7539). Chacha20 is an improvement of the [Salsa20 stream cipher](https://cr.yp.to/snuffle/spec.pdf). The scheme is mathematically secure as this is a one-time pad ciphering.
 
 Chacha20 is used to generate a key stream (the one-time pad), from a random source. The full stream pad is kept, and not the initial state key as usually done. Chacha20 is expanding a 256 bits random secret into a stream, which is used to XOR the image. This is as secured as the Chacha20 implementation provided.
 
