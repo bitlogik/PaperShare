@@ -39,7 +39,7 @@ def gen_random():
     return hashlib.sha256("".join(sel_random)).digest()
 
 def char2bin(a):
-    # convert a uint8 char in binary -ASCII string
+    # convert a uint8 char in a raw binary string (1 bit in 1 byte)
     s = ''
     t = { '0':'\0\0\0','1':'\0\0\1','2':'\0\1\0','3':'\0\1\1',
           '4':'\1\0\0','5':'\1\0\1','6':'\1\1\0','7':'\1\1\1'  }
@@ -52,7 +52,7 @@ def char2bin(a):
     return s
 
 def string2bin(cstr):
-    # convert a string to a binary
+    # convert a string to raw binary
     s = ''
     for x in cstr:
         s += char2bin(x)
